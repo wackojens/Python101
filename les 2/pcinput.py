@@ -56,3 +56,13 @@ def muntenWisselgeld(aantal, muntstuk):
             print('Briefje(s) van', muntstuk, 'EUR')
         else:
             print('munt(en) van', muntstuk, 'EUR')
+
+def kortingCalculate(aantalMosselen, kostprijs):
+    discount = 0
+    if aantalMosselen>=2 and kostprijs>=150:
+        discount = 20
+    elif aantalMosselen>=2 and kostprijs<150 and kostprijs>=100:
+        discount = 10
+    elif aantalMosselen>=2 and kostprijs<100 and kostprijs>=50:
+        discount = 5
+    return discount

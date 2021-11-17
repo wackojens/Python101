@@ -7,14 +7,14 @@ prijsIJs = 3
 prijsDrank = 2
 korting = 0
 tempTotaal = 0
-
 totaalMosselen = pcinput.getInteger('Geef het aantal porties mosselen in: ')
 totaalKoninginnenhapje = pcinput.getInteger('Geef het aantal porties koninginnenhapje in: ')
 totaalIJs = pcinput.getInteger('Geef het aantal ijsjes in: ')
 totaalDrank = pcinput.getInteger('Geef het aantal drankjes in: ')
 totaal =(prijsMosselen * totaalMosselen) + (prijsKoninginnenhapje * totaalKoninginnenhapje) + (prijsIJs * totaalIJs) + (prijsDrank * totaalDrank)
 
-tempTotaal = totaal
+if totaalMosselen==0 and totaalKoninginnenhapje==0 and totaalIJs==0 and totaalDrank==0:
+    exit()
 
 while True:
     try:
@@ -23,19 +23,15 @@ while True:
     except ValueError:
         print('verkeerde input. Geef bedrag opnieuw in')
 
-if totaal>50 and totaalMosselen>=2:
-    korting = 5
-    totaalMetKorting = totaal - korting
-    wisselgeld = ontvangen - totaalMetKorting
-    tempTotaal = totaalMetKorting
-else:
-    wisselgeld = ontvangen - totaal
+korting = pcinput.kortingCalculate(totaalMosselen, totaal)
+totaalMetKorting = totaal - korting
+wisselgeld = ontvangen - totaalMetKorting
 
 while True:
     if wisselgeld<0:
         print('Te weinig betaald. Controleer ontvagen bedrag')
         ontvangen = float(input('Geef ontvangen bedrag in: '))
-        wisselgeld = ontvangen - tempTotaal
+        wisselgeld = ontvangen - totaalMetKorting
     else:
         break
 
@@ -55,24 +51,29 @@ totaal5C, rest = pcinput.berekenMuntstukken(rest, 0.05)
 totaal2C, rest = pcinput.berekenMuntstukken(rest, 0.02)
 totaal1C, rest = pcinput.berekenMuntstukken(rest, 0.01)
 
+afdrukken = input('Moet er een kassaticket afgedrukt worden? Y/N ')
+
+if afdrukken=='N':
+    exit()
+
 print(f"{'Kassaticket':^60}")
 print('*'*60)
 print(f"{'U werd geholpen door:':<30}{'Jens':>30}")
 print(f"{now.strftime('%Y-%m-%d'):<30}{now.strftime('%H:%M:%S'):>30}")
 print('*'*60)
-print(f"{'Gerecht':<28}{'Aantal':<16}{'Bedrag':>16}")
-print(f"{'Mosselen':<30}{totaalMosselen:<15}{totaalMosselen * prijsMosselen:>15.2f}")
-print(f"{'Koninginnenhapje':<30}{totaalKoninginnenhapje:<15}{totaalKoninginnenhapje * prijsKoninginnenhapje:>15.2f}")
-print(f"{'IJs':<30}{totaalIJs:<15}{totaalIJs * prijsIJs:>15.2f}")
-print(f"{'Drank':<30}{totaalDrank:<15}{totaalDrank * prijsDrank:>15.2f}")
+print(f"{'Besteld':<28}{'Aantal':<16}{'Bedrag':>16}")
+print(f"{'-Mosselen':<30}{totaalMosselen:<15}{totaalMosselen * prijsMosselen:>14.2f}{'€':>1}")
+print(f"{'-Koninginnenhapje':<30}{totaalKoninginnenhapje:<15}{totaalKoninginnenhapje * prijsKoninginnenhapje:>14.2f}{'€':>1}")
+print(f"{'-IJs':<30}{totaalIJs:<15}{totaalIJs * prijsIJs:>14.2f}{'€':>1}")
+print(f"{'-Drank':<30}{totaalDrank:<15}{totaalDrank * prijsDrank:>14.2f}{'€':>1}")
 print('='*60)
-print(f"{'Totaal te betalen:':<50}{totaal:>10.2f}")
+print(f"{'Totaal te betalen:':<50}{totaal:>9.2f}{'€':>1}")
 if korting>0:
-    print(f"{'Korting:':<50}{5:>10.2f}")
-    print(f"{'Totaal met korting:':<50}{totaalMetKorting:>10.2f}")
+    print(f"{'Korting:':<50}{korting:>9.2f}{'€':>1}")
+    print(f"{'Totaal met korting:':<50}{totaalMetKorting:>9.2f}{'€':>1}")
 print('-'*60)
-print(f"{'Betaald:':<50}{ontvangen:>10.2f}")
-print(f"{'Wisselgeld:':<50}{wisselgeld:>10.2f}")
+print(f"{'Betaald:':<50}{ontvangen:>9.2f}{'€':>1}")
+print(f"{'Wisselgeld:':<50}{wisselgeld:>9.2f}{'€':>1}")
 pcinput.muntenWisselgeld(totaal500, 500)
 pcinput.muntenWisselgeld(totaal200, 200)
 pcinput.muntenWisselgeld(totaal100, 100)
@@ -89,5 +90,8 @@ pcinput.muntenWisselgeld(totaal5C, 0.05)
 pcinput.muntenWisselgeld(totaal2C, 0.02)
 pcinput.muntenWisselgeld(totaal1C, 0.01)
 print('*'*60)
-print(f"{'Geniet van uw maaltijd en nog een prettige dag!':^60}")
+if totaalMosselen==0 and totaalKoninginnenhapje==0 and totaalIJs==0:
+    print(f"{'Gezondheid !!!':^60}")
+else:
+    print(f"{'Smakelijk eten !!!':^60}")
 print('*'*60)
