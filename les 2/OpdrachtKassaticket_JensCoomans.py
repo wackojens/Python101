@@ -69,7 +69,7 @@ print(f"{'-Drank':<30}{totaalDrank:<15}{totaalDrank * prijsDrank:>14.2f}{'€':>
 print('='*60)
 print(f"{'Totaal te betalen:':<50}{totaal:>9.2f}{'€':>1}")
 if korting>0:
-    print(f"{'Korting:':<50}{korting:>9.2f}{'€':>1}")
+    print(f"{'Korting:':<50}{'-':>3}{korting:>6.2f}{'€':>1}")
     print(f"{'Totaal met korting:':<50}{totaalMetKorting:>9.2f}{'€':>1}")
 print('-'*60)
 print(f"{'Betaald:':<50}{ontvangen:>9.2f}{'€':>1}")
