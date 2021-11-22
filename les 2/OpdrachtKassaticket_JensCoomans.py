@@ -8,14 +8,22 @@ prijsMosselen = 20
 prijsKoninginnenhapje = 10
 prijsIJs = 3
 prijsDrank = 2
+dishes = ['Mosselen', 'Koninginnenhapje', 'IJs', 'Drank']
 
 #Bediende en staat kassa vragen
 bediende = pcinput.getString('Geef de naam van de bediende in: ')
 inhoudKassa = pcinput.getFloat('Geef de inhoud van de kassa in: ')
 
-#Programma loopen
+#Start loop
 end = 'N'
 while end == 'N':
+
+    #test
+    for dish in dishes:
+        dish = pcinput.dishAmount
+    
+    print(dishes)
+    exit()
 
     #Bestelling ingeven + controle op foutieve bestelling
     aantalMosselen = pcinput.getInteger('Geef het aantal porties mosselen in: ')
@@ -64,7 +72,8 @@ while end == 'N':
             wisselgeld = ontvangen - totaalMetKorting
         else:
             break
-
+    
+    #Inhoud kassa berekenen
     inhoudKassa = inhoudKassa + ontvangen - wisselgeld
 
     #Berekenen coupures wisselgeld
@@ -88,7 +97,7 @@ while end == 'N':
     afdrukken = pcinput.getLetter('Moet er een kassaticket afgedrukt worden? Y/N ')
 
     if afdrukken=='N':
-        exit()
+        continue
 
 #Ticket afdrukken
     #Titel

@@ -66,4 +66,7 @@ def kortingCalculate(aantalMosselen, kostprijs):
     elif aantalMosselen>=2 and kostprijs<100 and kostprijs>=50:
         discount = 5
     return discount
-    
+
+def dishAmount(dish):
+    number = getInteger('Geef aantal keer', dish, 'in: ')
+    return number
