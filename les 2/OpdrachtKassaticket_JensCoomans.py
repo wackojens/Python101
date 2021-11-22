@@ -16,6 +16,11 @@ totaal =(prijsMosselen * totaalMosselen) + (prijsKoninginnenhapje * totaalKoning
 if totaalMosselen==0 and totaalKoninginnenhapje==0 and totaalIJs==0 and totaalDrank==0:
     exit()
 
+korting = pcinput.kortingCalculate(totaalMosselen, totaal)
+totaalMetKorting = totaal - korting
+
+print('Er moet ', totaalMetKorting, 'EUR betaald worden.', sep='')
+
 while True:
     try:
         ontvangen = float(input('Geef ontvangen bedrag in: '))
@@ -23,8 +28,6 @@ while True:
     except ValueError:
         print('verkeerde input. Geef bedrag opnieuw in')
 
-korting = pcinput.kortingCalculate(totaalMosselen, totaal)
-totaalMetKorting = totaal - korting
 wisselgeld = ontvangen - totaalMetKorting
 
 while True:
