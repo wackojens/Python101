@@ -3,7 +3,7 @@ import pcinput
 import kassaCalculate
 import datetime
 
-#Datum en prijzen per eenheid
+muntstukken = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
 now = datetime.datetime.now()
 prijsMosselen = 20
 prijsKoninginnenhapje = 10
@@ -80,39 +80,8 @@ while True:
     print()
     print('Er moet ', wisselgeld, 'EUR teruggegeven worden', sep='')
 
-    #Berekenen coupures wisselgeld
-    totaal500, rest = kassaCalculate.berekenMuntstukken(wisselgeld, 500)
-    totaal200, rest = kassaCalculate.berekenMuntstukken(rest, 200)
-    totaal100, rest = kassaCalculate.berekenMuntstukken(rest, 100)
-    totaal50, rest = kassaCalculate.berekenMuntstukken(rest, 50)
-    totaal20, rest = kassaCalculate.berekenMuntstukken(rest, 20)
-    totaal10, rest = kassaCalculate.berekenMuntstukken(rest, 10)
-    totaal5, rest = kassaCalculate.berekenMuntstukken(rest, 5)
-    totaal2, rest = kassaCalculate.berekenMuntstukken(rest, 2)
-    totaal1, rest = kassaCalculate.berekenMuntstukken(rest, 1)
-    totaal50C, rest = kassaCalculate.berekenMuntstukken(rest, 0.50)
-    totaal20C, rest = kassaCalculate.berekenMuntstukken(rest, 0.20)
-    totaal10C, rest = kassaCalculate.berekenMuntstukken(rest, 0.10)
-    totaal5C, rest = kassaCalculate.berekenMuntstukken(rest, 0.05)
-    totaal2C, rest = kassaCalculate.berekenMuntstukken(rest, 0.02)
-    totaal1C, rest = kassaCalculate.berekenMuntstukken(rest, 0.01)
-
-    #Coupures weergeven
-    kassaCalculate.muntenWisselgeld(totaal500, 500)
-    kassaCalculate.muntenWisselgeld(totaal200, 200)
-    kassaCalculate.muntenWisselgeld(totaal100, 100)
-    kassaCalculate.muntenWisselgeld(totaal50, 50)
-    kassaCalculate.muntenWisselgeld(totaal20, 20)
-    kassaCalculate.muntenWisselgeld(totaal10, 10)
-    kassaCalculate.muntenWisselgeld(totaal5, 5)
-    kassaCalculate.muntenWisselgeld(totaal2, 2)
-    kassaCalculate.muntenWisselgeld(totaal1, 1)
-    kassaCalculate.muntenWisselgeld(totaal50C, 0.50)
-    kassaCalculate.muntenWisselgeld(totaal20C, 0.20)
-    kassaCalculate.muntenWisselgeld(totaal10C, 0.10)
-    kassaCalculate.muntenWisselgeld(totaal5C, 0.05)
-    kassaCalculate.muntenWisselgeld(totaal2C, 0.02)
-    kassaCalculate.muntenWisselgeld(totaal1C, 0.01)
+    #Berekenen coupures wisselgeld en print
+    kassaCalculate.changeNotes(muntstukken, wisselgeld)
     print()
 
     #Inhoud kassa berekenen

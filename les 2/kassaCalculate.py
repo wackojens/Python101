@@ -21,3 +21,27 @@ def kortingCalculate(aantalMosselen, kostprijs):
     elif aantalMosselen>=2 and kostprijs<100 and kostprijs>=50:
         discount = 5
     return discount
+
+def changeNotes(coins, change):
+    for coin in coins:
+        if coin <= 1:
+            coin = coin * 100
+            change = change * 100
+            amount = 0
+            amount = change // coin
+            change = change % coin
+            coin = coin / 100
+            change = change / 100
+        else:
+            amount = 0
+            amount = change // coin
+            change = change % coin
+        if amount > 0:
+            print(int(amount), end=' ')
+            if coin >= 5:
+                print('Briefje(s) van ', coin, 'EUR', sep='')
+            else:
+                print('munt(en) van ', coin, 'EUR', sep='')
+
+
+
