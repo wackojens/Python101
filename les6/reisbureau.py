@@ -36,6 +36,7 @@ totaalHotel = hotelVolwassenen + hotelKinderen
 totaalVervoer = prijsVervoer * 2 * totaalPersonen
 totaalPrijs = totaalVervoer + totaalHotel
 
+#printen
 print()
 print('Uw aantal personen is', totaalPersonen, 'met', volwassenen, 'volwassenen en', kinderen, 'kinderen')
 print('U gaat', aantalNachten, 'nachten op vakantie en moet', totaalNachten, 'nachten betalen. U heeft dus', gratisNachten, 'nacht(en) gratis')
