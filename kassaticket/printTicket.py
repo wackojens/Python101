@@ -2,7 +2,7 @@ import datetime
 
 now = datetime.datetime.now()
 
-def printTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDiscount, received, change):
+def getTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDiscount, received, change):
     print(f"{'Kassaticket':^60}")
     print('*'*60)
 
@@ -30,6 +30,7 @@ def printTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDi
     else:
         print(f"{'Smakelijk eten !!!':^60}")
         print('*'*60)
+        print()
 
 
 def printOrderedDishes(dishes, dishAmount, prices):

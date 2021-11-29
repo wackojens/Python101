@@ -14,7 +14,6 @@ inhoudKassa = pcinput.getFloat('Geef de inhoud van de kassa in: ')
 print()
 
 while True:
-
     kassaCalculate.getValidOrder(gerechten, aantalGerechten, bediende, inhoudKassa)
     print()
 
@@ -41,10 +40,7 @@ while True:
         elif afdrukken == 'N':
             break
         else:
-            printTicket.printTicket(bediende, gerechten, aantalGerechten, prijzen, totaal, korting, totaalMetKorting, ontvangen, wisselgeld)
+            printTicket.getTicket(bediende, gerechten, aantalGerechten, prijzen, totaal, korting, totaalMetKorting, ontvangen, wisselgeld)
             break
 
-    while True:
-        print()
-        kassaCalculate.endRegister(bediende, inhoudKassa)
-        break
+    kassaCalculate.endRegister(bediende, inhoudKassa)

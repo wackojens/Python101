@@ -18,6 +18,7 @@ def getValidOrder(dishes,dishAmount, worker, registerContent):
         else:
             break
 
+
 def getTotalDiscount(dishAmount, prices):
     total = 0
     discount = 0
@@ -33,6 +34,7 @@ def getTotalDiscount(dishAmount, prices):
     totalWithDiscount = total - discount    
     return total, discount, totalWithDiscount
 
+
 def getChange(total, received):
     change = received - total
     while True:
@@ -43,6 +45,7 @@ def getChange(total, received):
             return change
         else:
             return change
+
 
 def getChangeNotes(coins, change):
     for coin in coins:
@@ -59,16 +62,18 @@ def getChangeNotes(coins, change):
             else:
                 print('munt(en) van ', coin, 'EUR', sep='')
 
+
 def endRegister(worker, registerContent):
-    end = pcinput.getLetter('Wil je stoppen? (Y/N): ')
-    if end != 'Y' and end != 'N':
-        print('Verkeerde input. Geef keuze opnieuw in.')
-    elif end == 'Y':
-        print()
-        print('Bediende:', worker)
-        print('De kassa heeft nu ', round(registerContent, 2), 'EUR', ' inhoud', sep='')
-        print()
-        exit()
-    else:
-        print()
-        return
+    while True:
+        end = pcinput.getLetter('Wil je stoppen? (Y/N): ')
+        if end != 'Y' and end != 'N':
+            print('Verkeerde input. Geef keuze opnieuw in.')
+        elif end == 'Y':
+            print()
+            print('Bediende:', worker)
+            print('De kassa heeft nu ', round(registerContent, 2), 'EUR', ' inhoud', sep='')
+            print()
+            exit()
+        else:
+            print()
+            return
