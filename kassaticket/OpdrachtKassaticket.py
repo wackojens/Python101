@@ -15,30 +15,15 @@ print()
 
 while True:
 
-    while True:
-        kassaCalculate.getOrderAmount(gerechten, aantalGerechten)
-        print()
-
-        if aantalGerechten[0] == 0 and aantalGerechten[1] == 0 and aantalGerechten[2] == 0 and aantalGerechten[3] == 0:
-            print('Geen bestelling geplaatst. Begin opnieuw of stop het programma.')
-            kassaCalculate.endRegister(bediende, inhoudKassa)
-        else:
-            break
+    kassaCalculate.getValidOrder(gerechten, aantalGerechten, bediende, inhoudKassa)
+    print()
 
     totaal, korting, totaalMetKorting = kassaCalculate.getTotalDiscount(aantalGerechten, prijzen)
-
     print('Er moet ', float(totaalMetKorting), 'EUR betaald worden.', sep='')
     print()
 
-    while True:
-        try:
-            ontvangen = pcinput.getFloat('Geef ontvangen bedrag in: ')
-            break
-        except ValueError:
-            print('verkeerde input. Geef bedrag opnieuw in')
-
+    ontvangen = pcinput.getFloat('Geef ontvangen bedrag in: ')
     wisselgeld = kassaCalculate.getChange(totaalMetKorting, ontvangen)
-
     print('Je hebt ', ontvangen, 'EUR ontvangen', sep='')
     print()
     print('Er moet ', round(wisselgeld, 2), 'EUR teruggegeven worden', sep='')

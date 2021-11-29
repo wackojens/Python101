@@ -1,5 +1,23 @@
 import pcinput
 
+def getValidOrder(dishes,dishAmount, worker, registerContent):
+    while True:
+        teller = 0
+        dishAmount.clear()
+        for dish in dishes:
+            print('Geef het aantal keer', dish, 'in: ', end='')
+            amount = pcinput.getInteger('')
+            dishAmount.append(amount)
+        for amount in dishAmount:
+            if amount == 0:
+                teller = teller + 1
+        if teller == len(dishAmount):
+            print()
+            print('Geen bestelling geplaatst. Begin opnieuw of stop het programma.')
+            endRegister(worker, registerContent)
+        else:
+            break
+
 def getTotalDiscount(dishAmount, prices):
     total = 0
     discount = 0
@@ -14,6 +32,17 @@ def getTotalDiscount(dishAmount, prices):
             discount = 5
     totalWithDiscount = total - discount    
     return total, discount, totalWithDiscount
+
+def getChange(total, received):
+    change = received - total
+    while True:
+        if change < 0:
+            print('Te weinig betaald. Controleer ontvagen bedrag')
+            received = pcinput.getFloat('Geef ontvangen bedrag in: ')
+            change = received - total
+            return change
+        else:
+            return change
 
 def getChangeNotes(coins, change):
     for coin in coins:
@@ -43,21 +72,3 @@ def endRegister(worker, registerContent):
     else:
         print()
         return
-
-def getOrderAmount(dishes,dishAmount):
-    dishAmount.clear()
-    for dish in dishes:
-        print('Geef het aantal keer', dish, 'in: ', end='')
-        amount = pcinput.getInteger('')
-        dishAmount.append(amount)
-
-def getChange(total, received):
-    change = received - total
-    while True:
-        if change < 0:
-            print('Te weinig betaald. Controleer ontvagen bedrag')
-            received = pcinput.getFloat('Geef ontvangen bedrag in: ')
-            change = received - total
-            return change
-        else:
-            return change

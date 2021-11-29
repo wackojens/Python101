@@ -1,5 +1,4 @@
 import datetime
-import kassaCalculate
 
 now = datetime.datetime.now()
 
@@ -31,6 +30,7 @@ def printTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDi
     else:
         print(f"{'Smakelijk eten !!!':^60}")
         print('*'*60)
+
 
 def printOrderedDishes(dishes, dishAmount, prices):
     for dish, amount, price in zip(dishes, dishAmount, prices):
