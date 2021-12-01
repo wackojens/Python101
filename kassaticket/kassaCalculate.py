@@ -16,6 +16,7 @@ def getValidOrder(dishes,dishAmount, worker, registerContent):
             print('Geen bestelling geplaatst. Begin opnieuw of stop het programma.')
             endRegister(worker, registerContent)
         else:
+            print()
             break
 
 
@@ -31,7 +32,9 @@ def getTotalDiscount(dishAmount, prices):
             discount = 10
         elif total >= 50:
             discount = 5
-    totalWithDiscount = total - discount    
+    totalWithDiscount = total - discount
+    print('Er moet ', float(totalWithDiscount), 'EUR betaald worden.', sep='')
+    print()  
     return total, discount, totalWithDiscount
 
 
@@ -61,6 +64,7 @@ def getChangeNotes(coins, change):
                 print('Briefje(s) van ', coin, 'EUR', sep='')
             else:
                 print('munt(en) van ', coin, 'EUR', sep='')
+    print()
 
 
 def endRegister(worker, registerContent):

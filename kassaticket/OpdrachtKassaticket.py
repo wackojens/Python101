@@ -1,6 +1,4 @@
-import pcinput
-import kassaCalculate
-import printTicket
+import pcinput, kassaCalculate, printTicket
 
 muntstukken = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
 gerechten = ['mosselen', 'koninginnenhapje', 'ijs', 'drank']
@@ -15,11 +13,8 @@ print()
 
 while True:
     kassaCalculate.getValidOrder(gerechten, aantalGerechten, bediende, inhoudKassa)
-    print()
 
     totaal, korting, totaalMetKorting = kassaCalculate.getTotalDiscount(aantalGerechten, prijzen)
-    print('Er moet ', float(totaalMetKorting), 'EUR betaald worden.', sep='')
-    print()
 
     ontvangen = pcinput.getFloat('Geef ontvangen bedrag in: ')
     wisselgeld = kassaCalculate.getChange(totaalMetKorting, ontvangen)
@@ -28,7 +23,6 @@ while True:
     print('Er moet ', round(wisselgeld, 2), 'EUR teruggegeven worden', sep='')
 
     kassaCalculate.getChangeNotes(muntstukken, wisselgeld)
-    print()
 
     inhoudKassa = inhoudKassa + ontvangen - wisselgeld
 
