@@ -38,16 +38,18 @@ def getTotalDiscount(dishAmount, prices):
     return total, discount, totalWithDiscount
 
 
-def getChange(total, received):
-    change = received - total
+def getChange(total):
     while True:
+        received = pcinput.getFloat('Geef ontvangen bedrag in: ')
+        change = received - total
         if change < 0:
             print('Te weinig betaald. Controleer ontvagen bedrag')
-            received = pcinput.getFloat('Geef ontvangen bedrag in: ')
-            change = received - total
-            return change
+            continue
         else:
-            return change
+            print('Je hebt ', received, 'EUR ontvangen', sep='')
+            print()
+            print('Er moet ', round(change, 2), 'EUR teruggegeven worden', sep='')
+            return change, received
 
 
 def getChangeNotes(coins, change):

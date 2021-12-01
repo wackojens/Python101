@@ -1,6 +1,19 @@
-import datetime
+import datetime, pcinput
 
 now = datetime.datetime.now()
+
+def askTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDiscount, received, change):
+    while True:
+        afdrukken = pcinput.getLetter('Moet er een kassaticket afgedrukt worden? Y/N ')
+        print()
+        if afdrukken != 'Y' and afdrukken != 'N':
+            print('Verkeerde input. Geef keuze opnieuw in.')
+        elif afdrukken == 'N':
+            break
+        else:
+            getTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDiscount, received, change)
+            break
+
 
 def getTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDiscount, received, change):
     print(f"{'Kassaticket':^60}")
@@ -36,4 +49,4 @@ def getTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDisc
 def printOrderedDishes(dishes, dishAmount, prices):
     for dish, amount, price in zip(dishes, dishAmount, prices):
         if amount > 0:
-            print(f"{'-':<1}{dish:<29}{amount:<15}{amount * price:>14.2f}{'€':>1}")
+            print(f"{'-':<1}{dish:<29}{amount:<15}{amount * price:>14.2f}{'€':>1}")      
