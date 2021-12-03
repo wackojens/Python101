@@ -20,9 +20,9 @@ import inputValidation2
 ####### X enkel nodig voor eerste methode #########
 x, getal, controleNummer = inputValidation2.getValidInput()
 
-check = 97 - (int(getal) % 97)
+check = 97 - (getal % 97)
 
-if int(controleNummer) == check:
+if controleNummer == check:
     print('Geldig nummer')
 else:
     print('Ongeldig nummer')
