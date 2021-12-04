@@ -1,12 +1,12 @@
 import OXO_Function
 
 player = 'X'
-bord = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
+gameBoard = [['-','-','-'],['-','-','-'],['-','-','-']]
 
-OXO_Function.toon_bord(bord)
+OXO_Function.showBoard(gameBoard)
 
 while True:
 
-    bord = OXO_Function.getChoice(bord, player)
-    OXO_Function.toon_bord(bord)
-    player = OXO_Function.getWinner(bord, player)
+    gameBoard = OXO_Function.getChoice(gameBoard, player)
+    OXO_Function.showBoard(gameBoard)
+    player = OXO_Function.getWinner(gameBoard, player)
