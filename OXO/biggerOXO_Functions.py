@@ -96,11 +96,3 @@ def getWinner(gBoard, player, n, win):
                 
     print('Draw')
     exit()
-
-
-
-# Easy method to check horizontal lines where 'n' and 'win' are the same values
-# gBoard = list(gBoard)
-# if gBoard.count([player] * win) == 1:
-#   print('Player', player, 'wins. Congratulations!')
-#   exit()
