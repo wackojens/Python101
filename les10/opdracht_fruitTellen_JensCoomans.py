@@ -1,8 +1,20 @@
 text='appel,peer,banaan,kers,appel,kers,kers,mango,appel,appel,kers,tomaat,banaan,appel,appel,appel,appel,kers,banaan,appel,banaan,kers,tomaat,mango'
+text2='appel,peer,banaan,kers,appel,kers,kers,mango,appel,appel,kers,tomaat,banaan,appel,appel,appel,appel,kers,banaan,appel,banaan,kers,tomaat,mango'
 dictionary = {}
 
+text2 = text2.split(',')
+text2 = list(set(text2))
+text2.sort()
 text = text.split(',')
-text.sort()
+
+
+for fruit in text2:
+    dictionary[fruit] = text.count(fruit)
+
+for fruit in dictionary:
+    print(f"{fruit:<12}{':':>1}{dictionary[fruit]:>3}")
+
+exit()
 
 for fruit in text:
 #   dictionary[fruit] = text.count(fruit)
