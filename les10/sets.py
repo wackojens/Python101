@@ -27,4 +27,14 @@ print(set37)
 print(setRest)
 
 setcompr3 = {i for i in range(1,1001) if i % 3 == 0}
+setcompr7 = {i for i in range(1,1001) if i % 7 == 0}
+setcompr11 = {i for i in range(1,1001) if i % 11 == 0}
+setcompr3711 = {i for i in range(1,1001) if i % 3 == 0 and i % 7 == 0 and i % 11 == 0}
+setcompr37 = {i for i in range(1,1001) if i % 3 == 0 and i % 7 == 0 and i % 11 != 0}
+setcomprRest = {i for i in range(1,1001) if i % 3 != 0 and i % 7 != 0 and i % 11 != 0}
 print(setcompr3)
+print(setcompr7)
+print(setcompr11)
+print(setcompr3711)
+print(setcompr37)
+print(setcomprRest)
