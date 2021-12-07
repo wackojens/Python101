@@ -31,3 +31,15 @@ def readLinesDay3():
     for line in lines:
         temp.append(line.strip())
     return temp
+
+
+
+def readLinesDay4():
+    temp = []
+
+    file1 = open("inputDay4RandomNum.txt", "r")
+    lines = file1.readlines()
+
+    for line in lines:
+        temp.append(line)
+    return temp

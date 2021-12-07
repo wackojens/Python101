@@ -33,62 +33,76 @@ answerEpsilon = int(answerEpsilon, 2)
 print(answerGamma * answerEpsilon)
 
 ####################    PART 2
-newList = []
+oxList = []
+oxBinary = readInput.readLinesDay3()
 
-for j in range(len(binary[0])):
+for j in range(len(oxBinary[0])):
     count0 = 0
     count1 = 0
-    for i in range(len(binary)):
-        if binary[i][j] == '1':
+    for i in range(len(oxBinary)):
+        if oxBinary[i][j] == '1':
             count1 += 1
         else:
             count0 += 1
     if count1 > count0:
-        for k in binary:
+        for k in oxBinary:
             if k[j] != '0':
-                newList.append(k)
+                oxList.append(k)
     elif count0 > count1:
-        for k in binary:
+        for k in oxBinary:
             if k[j] != '1':
-                newList.append(k)
+                oxList.append(k)
     else:
-        for k in binary:
+        for k in oxBinary:
             if k[j] != '0':
-                newList.append(k)
+                oxList.append(k)
 
-    binary.clear()
-    binary = newList
-    newList.clear()
+    oxBinary.clear()
+    oxBinary = oxBinary + oxList
+    oxList.clear()
+    if len(oxBinary) == 1:
+        break
 
-print(binary)
 
-exit()
-binaryTest = readInput.readLinesDay3()
-newList = []
 
-for j in range(len(binaryTest[0])):
+coBinary = readInput.readLinesDay3()
+coList = []
+
+for j in range(len(coBinary[0])):
     count0 = 0
     count1 = 0
-    for i in range(len(binaryTest)):
-        if binary[i][j] == '1':
+    for i in range(len(coBinary)):
+        if coBinary[i][j] == '1':
             count1 += 1
         else:
             count0 += 1
     if count1 > count0:
-        for k in binaryTest:
+        for k in coBinary:
             if k[j] != '1':
-                newList.append(k)
+                coList.append(k)
     elif count0 > count1:
-        for k in binaryTest:
+        for k in coBinary:
             if k[j] != '0':
-                newList.append(k)
-    else:
-        for k in binaryTest:
+                coList.append(k)
+    elif count0 == count1:
+        for k in coBinary:
             if k[j] != '1':
-                newList.append(k)
+                coList.append(k)
+    
+    coBinary.clear()
+    coBinary = coBinary + coList
+    coList.clear()
+    if(len(coBinary)) == 1:
+        break
 
-    binaryTest.clear()
-    binaryTest = binaryTest + newList
-    newList.clear()
 
-print(binaryTest)
+
+oxBinary = str(oxBinary)
+oxBinary = oxBinary.replace('[','').replace("'",'').replace(']', '')
+oxBinary = int(oxBinary, 2)
+
+coBinary = str(coBinary)
+coBinary = coBinary.replace('[','').replace("'",'').replace(']', '')
+coBinary = int(coBinary, 2)
+
+print(oxBinary * coBinary)
