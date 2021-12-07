@@ -57,11 +57,12 @@ for j in range(len(binary[0])):
                 newList.append(k)
 
     binary.clear()
-    binary = binary + newList
+    binary = newList
     newList.clear()
 
 print(binary)
 
+exit()
 binaryTest = readInput.readLinesDay3()
 newList = []
 
