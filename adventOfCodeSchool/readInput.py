@@ -34,11 +34,33 @@ def readLinesDay3():
 
 
 
-def readLinesDay4():
+def readLinesDay4Board():
+    from itertools import filterfalse
     temp = []
 
-    file1 = open("inputDay4RandomNum.txt", "r")
+    file1 = open("inputDay4BoardNumbers.txt", "r")
     lines = file1.readlines()
+    lines = str(lines)
+    lines = lines.replace('\n', '')
+    lines = lines.replace('n', '')
+    lines = lines.replace('\\', '')
+    lines = lines.replace("'", '')
+    lines = lines.replace(',', '')
+    lines = lines.replace('[', '')
+    lines = lines.replace(']', '')
+    lines = list(lines)
+    for i in range(len(lines)-1):
+        if lines[i-1] == ' ' and lines[i+1] == ' ':
+            lines[i] = lines[i]
+        if lines[i] != ' ' and lines[i+1] != ' ':
+            lines[i] = lines[i] + lines[i+1]
+        if lines[i-1] != ' ' and lines[i+1] == ' ':
+            lines[i] = ' '
+        if i == len(lines)-2 and lines[i] != ' ' and lines[i+1] != ' ':
+            lines[i+1] = ' '
+ 
+    lines = [*filterfalse(lambda i: i == ' ', lines)]
+        
 
     for line in lines:
         temp.append(line)
