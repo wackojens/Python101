@@ -4,12 +4,14 @@ dictionary = {}
 
 text2 = text2.split(',')
 text2 = list(set(text2))
-text2.sort()
 text = text.split(',')
 
 
 for fruit in text2:
     dictionary[fruit] = text.count(fruit)
+
+keyList = list(dictionary.keys())
+keyList.sort()
 
 for fruit in dictionary:
     print(f"{fruit:<12}{':':>1}{dictionary[fruit]:>3}")
