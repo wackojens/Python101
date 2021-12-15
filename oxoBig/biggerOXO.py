@@ -12,10 +12,20 @@ gameBoard = []
 if n > 26 or win > n:
     exit()
 
+###### Dit:
+'''
 for number in range(n):
     rowWidth.append(emptyField)
 for number in range(n):
     gameBoard.append(copy.deepcopy(rowWidth))
+'''
+# kan vervangen worden door:
+'''
+for number in range(n)
+    gameBoard.append(["-" for x in range(n)])
+'''
+# copy moet niet meer imported worden en de variabelen "emptyField" en "rowWidth" zijn niet meer nodig in het 2de voorbeeld.
+
 
 biggerOXO_Functions.showBoard(gameBoard, n)
 
