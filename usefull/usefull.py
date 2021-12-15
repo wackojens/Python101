@@ -80,3 +80,5 @@ for x in range(1,21):
         print(("{:>2} x{:>2} ={:>3}").format(x,y,x*y), end='  ')
     print()
 '''
+
+# format vindt je terug bij de presentatie eenvoudige functies
