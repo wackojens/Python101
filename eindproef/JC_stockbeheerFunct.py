@@ -1,4 +1,5 @@
 def getProducts(orders, stock, lijst1, lijst2, lijst3):
+    teller = 1
 
     for order in orders:
         product = stock.get(order[0])
@@ -22,7 +23,8 @@ def getProducts(orders, stock, lijst1, lijst2, lijst3):
         if product[0] < product[1] and product[3] != 1:
             lijst2.append([order[0], product[2], product[4], product[5]])
             product[3] = 1
-        if product[0] < (0 - product[2]) + product[1]:
+        while product[0] < (0 - product[2]) * teller + product[1]:
+            teller += 1
             for i in range(len(lijst2)):
                 if order[0] in lijst2[i]:
                     lijst2[i][1] = lijst2[i][1] + product[2]
