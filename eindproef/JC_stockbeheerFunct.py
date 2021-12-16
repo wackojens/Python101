@@ -1,7 +1,18 @@
+# Code in comments op lines: 5-6, 9-15, 37-38, 43 nodig om zeer grote bestellingen correct te laten verlopen. Line 39 wordt vervangen door line 37 en moet dus uitgeschakeld worden.
+
 def getProducts(orders, stock, lijst1, lijst2, lijst3):
-    teller = 1
+
+#   tellerForProduct = []
+#   teller = 1
 
     for order in orders:
+#       for i in range(len(tellerForProduct)):
+#           if order[0] in tellerForProduct[i]:
+#               teller = tellerForProduct[i][1]
+#               tellerForProduct.remove(tellerForProduct[i])
+#               break
+#           else:
+#               teller = 1
         product = stock.get(order[0])
 
 ####### Lijst 3 maken
@@ -23,11 +34,13 @@ def getProducts(orders, stock, lijst1, lijst2, lijst3):
         if product[0] < product[1] and product[3] != 1:
             lijst2.append([order[0], product[2], product[4], product[5]])
             product[3] = 1
-        while product[0] < (0 - product[2]) * teller + product[1]:
-            teller += 1
+#       while product[0] < (0 - product[2]) * teller + product[1]:
+#           teller += 1
+        if product[0] < (0 - product[2]) + product[1]:
             for i in range(len(lijst2)):
                 if order[0] in lijst2[i]:
                     lijst2[i][1] = lijst2[i][1] + product[2]
+#       tellerForProduct.append([order[0], teller])
 
 
 
