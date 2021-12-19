@@ -7,3 +7,4 @@ def getOrder(dishes, orders):
         orderDict = {"gerecht": dish["gerecht"], "prijs": dish["prijs"], "aantal": num}
         orders.append(orderDict)
     return orders
+    

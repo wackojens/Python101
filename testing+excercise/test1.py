@@ -18,3 +18,4 @@ bestelling = list(Funct_testingExcercise.getOrder(menukaart, bestelling))
 for gerecht in bestelling:
     print(gerecht)
     print(gerecht["aantal"] * gerecht["prijs"])
+    
