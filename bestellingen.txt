@@ -1,0 +1,11 @@
+Bestelling 1
+20-12-2021  12:14:47
+--------------------
+noten brood: 1000
+bruin brood: 1000
+wit brood: 1000
+sandwich: 1000
+noten sandwich: 1000
+====================
+
+

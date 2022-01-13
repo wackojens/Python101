@@ -59,7 +59,8 @@ def getChange(total):
             print('Er moet ', round(change, 2), 'EUR teruggegeven worden', sep='')
             return change, received
 
-def getChangeNotes(coins, change):
+def getChangeNotes(change):
+    coins = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01]
     for coin in coins:
         if change == 0:
             return
@@ -77,7 +78,7 @@ def getChangeNotes(coins, change):
 def printTicket(order, total, received, change):
     ticket = pcinput.getLetter('Druk op P om een ticket af te drukken of een andere toets om verder te gaan: ')
     if ticket != 'P':
-        exit()
+        return
     change = round(change, 2)
     print('*' * 60)
     print(f"* {'product':<}{'* aantal':>21}{'* prijs':^14}{'* totaal':^12}   *")
@@ -99,6 +100,13 @@ def endRegister(worker, registerContent, dishes):
             print('Bediende:', worker)
             print('De kassa heeft nu ', round(registerContent, 2), 'EUR', ' inhoud', sep='')
             printProducts(dishes)
+            with open("stock.txt", "w") as file:
+                for dish in dishes:
+                    file.writelines(dish)
+            file.close()
             exit()
         else:
             return
+
+def readStock():
+    dishes = []

@@ -1,0 +1,30 @@
+Hond:
+-geslacht m of v
+-4 poten
+-staart
+-carnivoor
+-snuit
+-2 ogen
+-2 oren
+-kleur
+-vacht
+-schofthoogte
+-gewicht
+-hoofd
+-geboortedatum
+
+Ras:
+-naam
+
+
+Pukie:
+-geslacht       m
+-geboortedatum  4j
+-schofthoogte   50cm
+-gewicht        50kg
+-vacht          kort
+-kleur          oranje/bruin
+-oren           platliggend
+-ogen           geel/groen
+-snuit          kort
+-hoofd          breed

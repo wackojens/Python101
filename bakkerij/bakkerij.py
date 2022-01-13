@@ -72,20 +72,16 @@ voorraad = {
     "noten": [50, 20, "el"],    
 }
 
+with open("bestellingen.txt", "w") as file:
+    file.write('')
+    file.close()
+
 while tijd != 10:
     bakkerijFunct.getOrder(producten, bestelling)
     teller = bakkerijFunct.printOrderTXT(teller, bestelling)
     tijd = bakkerijFunct.getTime()
 print('=' * 100)
 
-ingredienten = bakkerijFunct.getAmounts(producten)
+ingredienten = bakkerijFunct.getIngredients(producten)
 bakkerijFunct.printTotals(producten, ingredienten)
 bakkerijFunct.getStock(voorraad, ingredienten)
-
-# vraag de bestellingen
-
-# bereken de totalen van de bestelde producten en print
-
-# bereken de totalen per ingredient en druk af
-
-# print de nieuwe stock af
