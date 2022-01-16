@@ -64,11 +64,11 @@ p1 = Punt(1,1)
 p2 = Punt(0,0)
 
 r1 = Rechthoek(p1, 9, 4)
-r2 = Rechthoek(p2, 15, 9)
+r2 = Rechthoek(p2, 3, 3)
 
 p3 = r1.getRightLowerCorner()
 
-print(p3.x, p3.y)
+print((p3.x, p3.y))
 print(r1.getCircumference())
 print(r1.getSurface())
 print(r1.getOverlay(r2))
