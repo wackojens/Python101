@@ -43,11 +43,11 @@ print(p.colour)                 #Print de waarde van het 'colour' attribuut
 print(p.afstandTotOorsprong())  #Print de afstand van de oorsprong (0,0) tot aan het punt(p). Stelling van pythagoras!
 p.translatie(5,5)               #Verplaatst het punt met de gegeven values
 print([p])
-p.spiegelOverX()
+p.spiegelOverX()                #Spiegelt het punt over de x-as
 print([p])
-p.spiegelOverY()
+p.spiegelOverY()                #Spiegelt het punt over de y-as
 print([p])
-p.spiegel()
+p.spiegel()                     #Spiegelt het punt over de x en y-as
 print([p])
 '''
 
@@ -61,8 +61,12 @@ class Rechthoek:
     def __repr__(self):
         return f'Links boven: {self.xy.x,self.xy.y}, B: {self.breedte}, H: {self.hoogte}'
 
-    def hoekPunten(self):
-        return f'{self.xy.x,self.xy.y}, {self.xy.x,self.xy.y + self.hoogte}, {self.xy.x + self.breedte,self.xy.y}, {self.xy.x + self.breedte,self.xy.y + self.hoogte}'
+    def getCorners(self):
+        self.LB = (self.sPunt.x, self.sPunt.y)
+        self.LO = (self.sPunt.x, self.sPunt.y + self.hoogte)
+        self.RB = (self.sPunt.x + self.breedte, self.sPunt.y)
+        self.RO = (self.sPunt.x + self.breedte, self.sPunt.y + self.hoogte)
+        return f'{self.LB}, {self.LO}, {self.RB}, {self.RO}'
 
 p = Punt(4,4)
 r = Rechthoek(p, 10, 3)
@@ -82,7 +86,7 @@ class Rechthoek:
         self.hoogte = self.ROH.y - self.LBH.y
         return f'Breedte = {abs(self.breedte)}, Hoogte = {abs(self.hoogte)}'
 
-    def translate(self, deltaX, deltaY):
+    def translatie(self, deltaX, deltaY):
         self.LBH.translatie(deltaX, deltaY)
         self.ROH.translatie(deltaX, deltaY)
 
@@ -94,6 +98,6 @@ r = Rechthoek(pLBH, pROH)
 print(r.getSize())
 print((r.LBH.x,r.LBH.y))
 print((r.ROH.x,r.ROH.y))
-r.translate(5,5)
+r.translatie(5,5)
 print((r.LBH.x,r.LBH.y))
 print((r.ROH.x,r.ROH.y))
