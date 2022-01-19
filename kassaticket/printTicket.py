@@ -42,8 +42,8 @@ def getTicket(worker, dishes, dishAmount, prices, total, discount, totalWithDisc
         print(f"{'Gezondheid !!!':^60}")
     else:
         print(f"{'Smakelijk eten !!!':^60}")
-        print('*'*60)
-        print()
+    print('*'*60)
+    print()
 
 
 def printOrderedDishes(dishes, dishAmount, prices):
