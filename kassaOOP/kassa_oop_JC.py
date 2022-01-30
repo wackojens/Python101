@@ -1,5 +1,6 @@
 from pcinput import getInteger, getString, getLetter
-from kassaticket_classes_JC import Product, Bestelling, Ticket
+from kassaticket_classes_JC import Product, Bestelling
+import pickle
 
 
 
@@ -18,8 +19,26 @@ while True:
     print('Bedrag', inkomsten)
     print('Wisselgeld', bestelling.getChange())
     kassaBegin += inkomsten
+
+
+
+    try:
+        inputbestand = open('bestelling.nr', 'rb')  # rb is read binary
+        bestelnummer = pickle.load(inputbestand)
+        inputbestand.close()
+    except:
+        bestelnummer = 1
+
+    # schrijven bestelling
+    bestelnummer += 1
+    outputbestand = open('bestelling.nr','wb')     #wb is write binair
+    pickle.dump(bestelnummer, outputbestand )
+    outputbestand.close()
+
+
+
     if getLetter('Ticket? J/N: ') == 'J':
-        Ticket(naamBediende, bestelling)
+        bestelling.getTicket(naamBediende, bestelnummer)
     if getLetter('Stoppen? J/N:') == 'J':
         print('Bediende: ', naamBediende)
         print('Inhoud kassa: ', kassaBegin)

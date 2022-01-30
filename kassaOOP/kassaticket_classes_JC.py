@@ -4,9 +4,12 @@ from pcinput import getFloat, getInteger
 
 
 class Product:
-    def __init__(self, naam: str = '', prijs: float = 0):
+    def __init__(self, naam: str, prijs: float):
         self.naam = naam
         self.prijs = prijs
+    
+    def print(self):
+        print(f"{self.naam}    {self.prijs}")
 
 
 
@@ -25,7 +28,7 @@ class Bestelling:
             teller = 0
             for product in gerechten:
                 aantal = getInteger(f'Geef het aantal {product.naam}: ')
-                self.products[product.naam] = { 'naam' : product.naam, 'prijs' : product.prijs, 'aantal' : aantal}
+                self.products[product.naam] = { 'product' : product, 'aantal' : aantal}
                 if aantal == 0:
                     teller += 1
             if teller == len(self.products):
@@ -35,7 +38,7 @@ class Bestelling:
 
     def berekenBedrag(self):
         for product in self.products:
-            self.bedrag += self.products[product]['prijs'] * self.products[product]['aantal']
+            self.bedrag += self.products[product]['product'].prijs * self.products[product]['aantal']
         self.getKorting()
         return self.totaal
 
@@ -60,36 +63,31 @@ class Bestelling:
                 print('Ontvangen: ', self.ontvangen)
                 return self.wisselgeld
 
-
-
-class Ticket:
-    def __init__(self, bediende, bestelling):
-        self.bediende = bediende
-        self.bestelling = bestelling
-        self.getTicket()
-
-    def getTicket(self):
+    def getTicket(self, bediende, bestelnum):
         besteld = []
+        self.bediende = bediende
+        self.bestelnum = bestelnum
         now = datetime.datetime.now()
-        gerechten = self.bestelling.products
         print(f"{'Kassaticket':^60}")
         print('*'*60)
+        print(f'{self.bestelnum:^60}')
+        print('-'*60)
         print(f"{'U werd geholpen door:':<30}{self.bediende:>30}")
         print(f"{now.strftime('%d-%m-%Y'):<30}{now.strftime('%H:%M:%S'):>30}")
         print('*'*60)
         print(f"{'Besteld':<28}{'Aantal':<16}{'Bedrag':>16}")
-        for product in gerechten:
-            if gerechten[product]['aantal'] > 0:
-                besteld.append(gerechten[product]['naam'])
-                print(f"{'-':<1}{gerechten[product]['naam']:<29}{gerechten[product]['aantal']:<15}{gerechten[product]['aantal'] * gerechten[product]['prijs']:>14.2f}{'€':>1}")
+        for product in self.products:
+            if self.products[product]['aantal'] > 0:
+                besteld.append(self.products[product]['product'].naam)
+                print(f"{'-':<1}{self.products[product]['product'].naam:<29}{self.products[product]['aantal']:<15}{self.products[product]['aantal'] * self.products[product]['product'].prijs:>14.2f}{'€':>1}")
         print('='*60)
-        print(f"{'Totaal te betalen:':<50}{self.bestelling.bedrag:>9.2f}{'€':>1}")
-        if self.bestelling.korting > 0:
-            print(f"{'Korting:':<50}{'-':>3}{self.bestelling.korting:>6.2f}{'€':>1}")
-            print(f"{'Totaal met korting:':<50}{self.bestelling.totaal:>9.2f}{'€':>1}")
+        print(f"{'Totaal te betalen:':<50}{self.bedrag:>9.2f}{'€':>1}")
+        if self.korting > 0:
+            print(f"{'Korting:':<50}{'-':>3}{self.korting:>6.2f}{'€':>1}")
+            print(f"{'Totaal met korting:':<50}{self.totaal:>9.2f}{'€':>1}")
         print('-'*60)
-        print(f"{'Betaald:':<50}{self.bestelling.ontvangen:>9.2f}{'€':>1}")
-        print(f"{'Wisselgeld:':<50}{self.bestelling.wisselgeld:>9.2f}{'€':>1}")
+        print(f"{'Betaald:':<50}{self.ontvangen:>9.2f}{'€':>1}")
+        print(f"{'Wisselgeld:':<50}{self.wisselgeld:>9.2f}{'€':>1}")
         print('*'*60)
         if 'drank' in besteld and len(besteld) == 1:
             print(f"{'Gezondheid !!!':^60}")
