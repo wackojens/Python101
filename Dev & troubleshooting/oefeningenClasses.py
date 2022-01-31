@@ -37,7 +37,7 @@ class Rechthoek:
         other.lowY = other.sPunt.y
         other.highY = other.sPunt.y + other.hoogte
 
-        if min(self.highX, other.highX) > max(self.lowX, other.lowX):
+        if min(self.highX, other.highX) > max(self.lowX, other.lowX) and min(self.highY, other.highY) > max(self.lowY, other.lowY):
 
             overlayLB = (max(self.lowX, other.lowX), max(self.lowY, other.lowY))
             overlayRB = (min(self.highX, other.highX), max(self.lowY, other.lowY))
@@ -60,7 +60,7 @@ class Rechthoek:
 
 
 
-p1 = Punt(1,1)
+p1 = Punt(0,0)
 p2 = Punt(0,0)
 
 r1 = Rechthoek(p1, 9, 4)
