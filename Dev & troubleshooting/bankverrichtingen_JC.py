@@ -51,6 +51,9 @@ class Rekening:
     def rekeningOverzicht(self):
         return (f'{self.voornaam} {self.achternaam}, er staat {self.geld}EUR op je rekening.')
 
+    def overschrijven(self, other):
+        return NotImplemented
+
 
 
 class Zichtrekening(Rekening):
@@ -110,7 +113,7 @@ class Spaarrekening(Rekening):
 
 # Onderstaande input kan gebruikt worden om het programma te testen
 
-'''
+
 ik = Persoon('Jens', 'Coomans', '56465464')
 pers = Persoon('J', 'C', '45454545')
 
@@ -149,4 +152,3 @@ print()
 print(test1.rekeningOverzicht())
 print(test2.rekeningOverzicht())
 print(test3.rekeningOverzicht())
-'''
