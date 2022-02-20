@@ -147,12 +147,11 @@ def test_storten_wrong_bedrag(testZichtrekening):
 
 
 # testen methodes subclass spaarrekening
-def test_overschrijven_spaarrekening(testZichtrekening, testPersoon):
-    spaarrekening = Spaarrekening("000-0000097-97", testPersoon)
+def test_overschrijven_spaarrekening(testZichtrekening, testSpaarrekening):
     # eerste geld op spaarrekening zetten om het overschrijven te kunnen testen
-    testZichtrekening.overschrijven(spaarrekening, 30)
-    spaarrekening.overschrijven(testZichtrekening, 20)
-    assert spaarrekening.geld == 10
+    testZichtrekening.overschrijven(testSpaarrekening, 30)
+    testSpaarrekening.overschrijven(testZichtrekening, 20)
+    assert testSpaarrekening.geld == 10
 
 def test_overschrijven_spaarrekening_other_wrong_rekening(testSpaarrekening, testPersoon):
     persoon = Persoon("Bert", "Vriens", "11.11.11-111.11")
