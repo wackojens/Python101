@@ -43,6 +43,6 @@ t.rt(180)
 
 for i in range(750, 0, 5):
     t.fd(i)
-    t.lt(71)
+    t.lt(80)
 
 turtle.done()
