@@ -138,7 +138,7 @@ def get_studenten_in_opleiding(id):
     for studentId in opleidingen[id]["studenten"]:
         student = studenten[studentId]
         studentenInOpleiding.append((student["voornaam"], student["achternaam"]))
-    return jsonify(opleidingen[id]["opleiding"],studentenInOpleiding)
+    return jsonify(studentenInOpleiding)
 
 @app.route('/opleidingen/<int:id>/vakken', methods=['GET'])
 def get_vakken_in_opleiding(id):
@@ -148,7 +148,7 @@ def get_vakken_in_opleiding(id):
     for vakId in opleidingen[id]["vakken"]:
         vak = vakken[vakId]
         vakkenInOpleiding.append(vak)
-    return jsonify(opleidingen[id]["opleiding"],vakkenInOpleiding)
+    return jsonify(vakkenInOpleiding)
 
 
 
@@ -194,7 +194,7 @@ def get_studenten_met_vak(id):
         if id in opleidingen[opleidingId]["vakken"]:
             for studentId in opleidingen[opleidingId]["studenten"]:
                 studentenVanVak.append((studenten[studentId]["voornaam"], studenten[studentId]["achternaam"]))
-    return jsonify(vakken[id]["naam"],studentenVanVak)
+    return jsonify(studentenVanVak)
 
 @app.route('/vakken/<int:id>/opleidingen', methods=['GET'])
 def get_opleidingen_met_vak(id):
@@ -204,7 +204,7 @@ def get_opleidingen_met_vak(id):
     for opleidingId in opleidingen:
         if id in opleidingen[opleidingId]["vakken"]:
             opleidingenVanVak.append(opleidingen[opleidingId]["opleiding"])
-    return jsonify(vakken[id]["naam"],opleidingenVanVak)
+    return jsonify(opleidingenVanVak)
 
 
 
