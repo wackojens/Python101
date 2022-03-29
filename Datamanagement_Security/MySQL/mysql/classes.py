@@ -40,15 +40,15 @@ class Klant(ClassicModels):
         self.vnaam = ''
         self.tel = ''
         self.adres1 = ''
-        self.adres2 = ''
+        self.adres2 = None
         self.gemeente = ''
-        self.staat = ''
-        self.postcode = ''
+        self.staat = None
+        self.postcode = None
         self.land = ''
-        self.verkopernr = ''
-        self.creditLimiet = ''
+        self.verkopernr = None
+        self.creditLimiet = None
         if self.nr > 0:
-            self.getKlant(self.nr)
+            self.getKlant()
         super().sluitClassicModels()
 
     def __repr__(self):
@@ -67,10 +67,10 @@ class Klant(ClassicModels):
             f'\n\tklantverkopernr: {self.verkopernr}, ' \
             f'\n\tklantcreditlimiet: {self.creditLimiet})'
 
-    def getKlant(self,klantnr)  :
+    def getKlant(self)  :
         super().openClassicModels()
         strSQL = "select * from  customers where customerNumber = %(klantnr)s"
-        self.cursor.execute(strSQL,{'klantnr':klantnr})
+        self.cursor.execute(strSQL,{'klantnr':self.nr})
         self.record = self.cursor.fetchone()
         if self.cursor.rowcount > 0: 
             self.matchKlantrecord(self.record)
@@ -91,14 +91,105 @@ class Klant(ClassicModels):
         self.verkopernr = record[11]
         self.creditLimiet = record[12]
 
-    def setKlant(self):
-        pass
+    def saveKlant(self):
+        super().openClassicModels()
+        strSQL = "select * from  customers where customerNumber = %(klantnr)s"
+        self.cursor.execute(strSQL,{'klantnr':self.nr})
+        self.record = self.cursor.fetchone()
+        if self.cursor.rowcount > 0: 
+            self.updateKlant()
+        else:
+            self.insertKlant()
+        super().sluitClassicModels()
+
+    def updateKlant(self):
+        strSQL = """UPDATE customers SET customerName = %(naam)s,
+                                        contactLastName = %(anaam)s,
+                                        contactFirstName = %(vnaam)s,
+                                        phone = %(tel)s,
+                                        addressLine1 = %(adres1)s,
+                                        addressLine2 = %(adres2)s,
+                                        city = %(gemeente)s,
+                                        state = %(staat)s,
+                                        postalCode = %(postcode)s,
+                                        country = %(land)s,
+                                        salesRepEmployeeNumber = %(verkopernr)s,
+                                        creditLimit = %(creditLimiet)s
+                                WHERE
+                                        customerNumber = %(klantnr)s"""
+        self.cursor.execute(strSQL,{'klantnr':self.nr,
+                                    'naam':self.naam,
+                                    'anaam':self.anaam,
+                                    'vnaam':self.vnaam,
+                                    'tel':self.tel,
+                                    'adres1':self.adres1,
+                                    'adres2':self.adres2,
+                                    'gemeente':self.gemeente,
+                                    'staat':self.staat,
+                                    'postcode':self.postcode,
+                                    'land':self.land,
+                                    'verkopernr':self.verkopernr,
+                                    'creditLimiet':self.creditLimiet
+                                    })
+        self.conn.commit()
+
+    def insertKlant(self):
+        strSQL = "select max(customerNumber) from customers"
+        self.cursor.execute(strSQL)
+        record = self.cursor.fetchone()
+        self.nr = record[0] + 1
+        strSQL = """INSERT INTO customers(customerNumber, 
+                                        customerName,
+                                        contactLastName,
+                                        contactFirstName,
+                                        phone,
+                                        addressLine1,
+                                        addressLine2,
+                                        city,
+                                        state,
+                                        postalCode,
+                                        country,
+                                        salesRepEmployeeNumber,
+                                        creditLimit
+                                        )
+                                VALUES( 
+                                        %(nr)s,
+                                        %(naam)s,
+                                        %(anaam)s,
+                                        %(vnaam)s,
+                                        %(tel)s,
+                                        %(adres1)s,
+                                        %(adres2)s,
+                                        %(gemeente)s,
+                                        %(staat)s,
+                                        %(postcode)s,
+                                        %(land)s,
+                                        %(verkopernr)s,
+                                        %(creditLimiet)s
+                                        )"""
+        self.cursor.execute(strSQL,{'nr':self.nr,
+                                    'naam':self.naam,
+                                    'anaam':self.anaam,
+                                    'vnaam':self.vnaam,
+                                    'tel':self.tel,
+                                    'adres1':self.adres1,
+                                    'adres2':self.adres2,
+                                    'gemeente':self.gemeente,
+                                    'staat':self.staat,
+                                    'postcode':self.postcode,
+                                    'land':self.land,
+                                    'verkopernr':self.verkopernr,
+                                    'creditLimiet':self.creditLimiet
+                                    })
+        self.conn.commit()
+
+
 
 
 
 
 if __name__ == "__main__":
-    klant1 = Klant()
+    """klant1 = Klant()
     klant1.getKlant(121)
     print(klant1)
     print('klantfirmanaam:',klant1.naam)
@@ -108,3 +199,23 @@ if __name__ == "__main__":
     
     klant3 = Klant(455000)
     print(klant3)
+
+    klant121 = Klant(121)
+    klant121.vnaam = 'Jonas'
+    klant121.saveKlant()"""
+
+    nieuweKlant = Klant()
+    nieuweKlant.naam = 'RCworks Willem'
+    nieuweKlant.anaam = 'Cajot'
+    nieuweKlant.vnaam = 'Willem'
+    nieuweKlant.tel = '0475/123456'
+    nieuweKlant.adres1 = 'Willemstraat 100'
+    nieuweKlant.adres2 = None
+    nieuweKlant.gemeente = 'Leuven'
+    nieuweKlant.staat = 'Vlaams-Brabant'
+    nieuweKlant.postcode = '3000'
+    nieuweKlant.land = 'België'
+    nieuweKlant.verkopernr = None
+    nieuweKlant.creditLimiet = None
+
+    nieuweKlant.saveKlant()
