@@ -1,4 +1,3 @@
-from turtle import update
 from flask import Response, request
 from movie_bag.database.models.movie import Movie
 from movie_bag.database.models.user import User

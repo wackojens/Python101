@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = ""
+authors = ["wackojens <wackojens2@hotmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.1.1"
+flask-mongoengine = "^1.0.0"
+Flask-RESTful = "^0.3.9"
+Flask-Bcrypt = "^1.0.1"
+Flask-JWT-Extended = "^4.3.1"
+Jinja2 = "^3.1.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
