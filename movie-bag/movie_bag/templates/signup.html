@@ -29,13 +29,41 @@
                         <span class="input-group-text bg-dark inputType" id="password">Password</span>
                         <input type="password" class="form-control" name="password" aria-label="Password" aria-describedby="password">
                     </div>
-                    <button type="submit" class="btn btn-light float-end">Submit</button>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6 class="smallInline text-white">Already a member?</h6>
+                            <a href="index" class="link">Log in</a>
+                        </div>
+                        <div class="col-8 form-check">
+                            <div class="float-end">
+                                <label class="label-text smallInline text-white">I agree to the</label>
+                                <a href="NotImplemented" class="link">user agreement</a>
+                                <label class="label-text smallInline text-white">and</label>
+                                <a href="NotImplemented" class="link">privacy policy</a>
+                                <input class="form-check-input customCheckbox" type="checkbox" value="" id="agreeCheckbox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-end" style="margin-left:10px;">
+                        <button type="reset" class="btn btn-light">Clear</button>
+                    </div>
+                    <div class="float-end">
+                        <button type="submit" id="submitBtn" class="btn btn-light">Submit</button>
+                    </div>
                 </form>
-                <div>
-                    <a href="index" class="link">back</a>
-                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    var button = document.getElementById("submitBtn");
+    var checkbox = document.getElementById("agreeCheckbox")
+
+    button.disabled = true;
+
+    checkbox.addEventListener('click', function(event){
+        button.disabled = !button.disabled;
+    });
+</script>

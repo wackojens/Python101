@@ -29,7 +29,12 @@ class SignupUi(Resource):
             password = request.form["password"]
             firstname = request.form["firstname"]
             lastname = request.form["lastname"]
-            user =  User(email=email,password=password,firstname=firstname,lastname=lastname)
+            user = User(email=email,password=password,firstname=firstname,lastname=lastname)
+            """
+            Wanneer de benamingen van form en model hetzelfde zijn kan voorgaande code vervangen worden door:
+            form = request.form
+            user = User(**form)
+            """
             user.hash_password()
             user.save()
             id = user.id

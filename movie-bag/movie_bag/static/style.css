@@ -2,3 +2,23 @@
     color: white;
     width: 110px;
 }
+
+.smallInline{
+    font-size: 0.75em;
+    display:inline;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.customCheckbox{
+    background-color: #6c757d !important;
+    border-color: #212529 !important;
+    box-shadow: none !important;
+    margin-right: 5px;
+}
+
+.temp{
+    font-size: 3em;
+}

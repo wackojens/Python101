@@ -71,34 +71,35 @@ def hobbies():
 def gaming():
     return \
         """
-        <body style=" margin-right: 0px;margin-left: 0px;margin-bottom: 0px;>
-            <center>
-                <h1 style="font-size:4em;">
-                    Gaming</h1>
-                <hr>
-                <div style="display: flex">
-                    <div style="flex:50%;">
-                        <img src="/static/valheim.jpg"; style="width:100%">
-                    </div>
-                    <div style="flex:50%;">
-                        <img src="/static/ark.jpg"; style="width:100%">
-                    </div>
+        <center>
+            <h1 style="font-size:4em;">
+                Gaming</h1>
+            <hr>
+            <div style="display: flex">
+                <div style="flex:50%;">
+                    <img src="/static/valheim.jpg"; style="width:100%;height:100%;">
                 </div>
-                <div style="display: flex;">
-                    <div style="flex:50%;">
-                        <img src="/static/razerSetup.jpg"; style="width:100%;height:100%;">
-                    </div>
-                    <div style="flex:50%;">
-                        <img src="/static/league.jpg"; style="width:100%;">
-                    </div>
+                <div style="flex:50%;">
+                    <img src="/static/ark.jpg"; style="width:100%;height:100%;">
                 </div>
-            </center>
-            <div style="position:fixed;bottom:0px;width:100%;text-align:center;word-spacing:20px">
-                <h5><a href='/' style="color:#ffffff">Home</a>
-                <a href='/Data' style="color:rgba(255,255,255,1)">Data</a>
-                <a href='/Hobbies' style="color:white">Hobbies</a></h5>
             </div>
-        </body>
+            <div style="display: flex;">
+                <div style="flex:33.33%;">
+                    <img src="/static/WoW.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:33.33%;">
+                    <img src="/static/razerSetup.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:33.33%;">
+                    <img src="/static/league.jpg"; style="width:100%;height:100%;">
+                </div>
+            </div>
+        </center>
+        <div style="position:fixed;bottom:0px;width:100%;text-align:center;word-spacing:20px">
+            <h5><a href='/' style="color:#ffffff">Home</a>
+            <a href='/Data' style="color:rgba(255,255,255,1)">Data</a>
+            <a href='/Hobbies' style="color:white">Hobbies</a></h5>
+        </div>
         """
 
 
@@ -111,22 +112,56 @@ def reizen():
             <h1 style="font-size:4em;">
                 Reizen</h1>
             <hr>
+            <div style="display: flex">
+                <div style="flex:25%;">
+                    <img src="/static/osaka.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:25%;">
+                    <img src="/static/tigerWhite.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:25%;">
+                    <img src="/static/angkorWat.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:25%;">
+                    <img src="/static/elephant.jpg"; style="width:100%;height:100%;">
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div style="flex:33.33%;">
+                    <img src="/static/miyajima.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:33.33%;">
+                    <img src="/static/tiger.jpg"; style="width:100%;height:100%;">
+                </div>
+                <div style="flex:33.33%;">
+                    <img src="/static/chiangRai.jpg"; style="width:100%;height:100%;">
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div style="flex:33.33%;">
+                    <video style="width:100%;height:100%" controls>
+                        <source src="/static/monumentValley.mp4" type="video/mp4" >
+                    </video>
+                </div>
+                <div style="flex:33.33%;">
+                    <video style="width:100%;height:100%" controls>
+                        <source src="/static/bigIsland.mp4" type="video/mp4" >
+                    </video>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <video style="width:100%;height:100%" controls>
+                    <source src="/static/kauai.mp4" type="video/mp4" >
+                </video>
+            </div>
         </center>
         <div style="position:fixed;bottom:0px;width:100%;text-align:center;word-spacing:20px">
-            <h5><a href='/'>Home</a>
-            <a href='/Data'>Data</a>
-            <a href='/Hobbies'>Hobbies</a></h5>
+            <h5><a href='/' style="color:#ffffff">Home</a>
+            <a href='/Data' style="color:rgba(255,255,255,1)">Data</a>
+            <a href='/Hobbies' style="color:white">Hobbies</a></h5>
         </div>
         """
 
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
-
-
-
-
-# <a href="https://duckduckgo.com "> Duck Duck Go</a>
-# <a href="www.hln.be"> www.hln.be</a>
-
-# <a href="/id/Ismael">Ismael</a></br>
