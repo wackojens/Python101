@@ -9,7 +9,6 @@ def send_async_email(app, msg):
         try:
             mail.send(msg)
         except ConnectionRefusedError as e:
-            print(e)
             raise InternalServerError("[MAIL SERVER] not working")
 
 def send_email(subject, sender, recipients, text_body, html_body):

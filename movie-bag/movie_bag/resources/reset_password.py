@@ -3,8 +3,7 @@ from flask_jwt_extended import create_access_token, decode_token
 from movie_bag.database.models.user import User
 from flask_restful import Resource
 import datetime
-from movie_bag.resources.errors import ExpiredTokenError
-from resources.errors import SchemaValidationError, InternalServerError, EmailDoesnotExistError, BadTokenError
+from resources.errors import SchemaValidationError, InternalServerError, EmailDoesnotExistError, BadTokenError, ExpiredTokenError
 from jwt.exceptions import ExpiredSignatureError, DecodeError, InvalidTokenError
 from services.mail_service import send_email
 
